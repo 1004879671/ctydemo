@@ -1,0 +1,3 @@
+com\ccty\service\zuul\config\SwaggerDocumentationConfig.class
+com\ccty\service\zuul\config\SwaggerConfig.class
+com\ccty\service\zuul\ZuulServiceApplication.class

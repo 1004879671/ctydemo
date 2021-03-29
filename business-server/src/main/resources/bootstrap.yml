@@ -1,0 +1,26 @@
+#指定注册中心地址
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:7001/eureka/
+  instance:
+    preferIpAddress: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+
+server:
+  port: 9005
+
+#服务的名称
+spring:
+  application:
+    name: business-service
+    cloud:
+      config:
+        discovery:
+          enabled: true #开启服务发现
+          service-id: config-server
+        #        enabled: true    #开启配置
+        name: business     #配置文件名称的前缀
+        profile: dev   #版本
+        uri: http://localhost:6001   #配置服务中心的uri
+

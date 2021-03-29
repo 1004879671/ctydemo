@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccty.service.common.dao.SysUserMapper">
+<!--    <resultMap id="geoFenceList" type="com.kangaroo.studio.moonlight.dao.model.GeoFence">
+        <constructor>
+            <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+            <arg column="name" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="type" javaType="java.lang.Integer" jdbcType="INTEGER" />
+            <arg column="group" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="geo" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="createTime" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="updateTime" javaType="java.lang.String" jdbcType="VARCHAR" />
+        </constructor>
+    </resultMap>
+
+    <sql id="base_column">id, name, type, `group`, geo, createTime, updateTime </sql>
+
+    <select id="queryGeoFence" parameterType="com.kangaroo.studio.moonlight.dao.model.GeoFenceQueryParam" resultMap="geoFenceList">
+        select <include refid="base_column"/> from geoFence where 1=1
+        <if test="type != null">
+            and type = #{type}
+        </if>
+        <if test="name != null">
+            and name like concat('%', #{name},'%')
+        </if>
+        <if test="group != null">
+            and `group` like concat('%', #{group},'%')
+        </if>
+        <if test="startTime != null">
+            and createTime >= #{startTime}
+        </if>
+        <if test="endTime != null">
+            and createTime <= #{endTime}
+        </if>
+    </select>-->
+
+    <insert id="saveSysUser">
+        INSERT INTO sysuser(id,name,age,sex,birth) VALUES(('Y'|| lpad(seq_sysuser.nextval, 18, '0')),#{name},#{age},#{sex},to_date(to_char(sysdate,'yyyy-MM-dd HH24:mi:ss'),'yyyy-MM-dd HH24:mi:ss'))
+    </insert>
+
+    <select id="selectPage" parameterType="com.ccty.service.common.entity.SysUser" resultType="com.ccty.service.common.entity.SysUser">
+        select * from sysuser where 1=1
+        <if test="age != null and age !='' ">
+            and age = #{age}
+        </if>
+    </select>
+
+    <select id="selectAll"  resultType="com.ccty.service.common.entity.SysUser">
+        select * from sysuser where 1=1
+        <if test="id != null and id !='' ">
+            and id = #{id}
+        </if>
+    </select>
+
+    <select id="findUserById" parameterType="java.lang.String"  resultType="com.ccty.service.common.entity.SysUser">
+        select * from sysuser where 1=1
+        <if test="id != null and id !='' ">
+            and id = #{id}
+        </if>
+    </select>
+
+    <select id="findUsers" parameterType="com.ccty.service.common.entity.SysUser"  resultType="com.ccty.service.common.entity.SysUser">
+        select * from sysuser where 1=1
+        <if test="age != null and age !='' ">
+            and age = #{age}
+        </if>
+        <if test="id != null and id !='' ">
+            and id = #{id}
+        </if>
+    </select>
+
+
+</mapper>

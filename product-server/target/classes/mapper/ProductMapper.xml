@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccty.service.product.map.ProductMapper">
+
+    <select id="findById" parameterType="java.lang.String" resultType="com.ccty.service.product.entity.Product">
+        select *
+        from tb_product where 1=1
+        <if test="id != null and id !='' ">
+           and id = #{id}
+        </if>
+    </select>
+
+<!--    <insert id="save" parameterType="com.ccty.service.product.entity.Product" >-->
+<!--        select *-->
+<!--        from tb_product where 1=1-->
+<!--        <if test="id != null and id!='' ">-->
+<!--            and id = #{id}-->
+<!--        </if>-->
+<!--    </insert>-->
+<!--    <update id="update" parameterType="com.ccty.service.product.entity.Product" >-->
+<!--        select *-->
+<!--        from tb_product where 1=1-->
+<!--        <if test="id != null and id!='' ">-->
+<!--            and id = #{id}-->
+<!--        </if>-->
+<!--    </update>-->
+
+<!--    <delete id="delete" parameterType="String" >-->
+<!--        select *-->
+<!--        from tb_product where 1=1-->
+<!--        <if test="id != null and id!='' ">-->
+<!--            and id = #{id}-->
+<!--        </if>-->
+<!--    </delete>-->
+
+</mapper>

@@ -1,0 +1,62 @@
+#指定注册中心地址
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:7001/eureka/
+  instance:
+    preferIpAddress: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+
+server:
+  port: 9003
+
+#服务的名称
+spring:
+  application:
+    name: common-service
+#  profiles:
+#    active: dev
+
+
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource            # 当前数据源操作类型
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@//127.0.0.1:1521/orcl
+    username: ENC(Lmvo/IB0FFXLKgZ8r6xYIg==)
+    password: ENC(Lmvo/IB0FFXLKgZ8r6xYIg==)
+
+#mybatis配置
+#mybatis:
+#  config-location: classpath:mybatis-config.xml
+#  mapper-locations: classpath:mapper/*.xml
+
+mybatis-plus:
+  config-location: classpath:mybatis-config.xml
+  mapper-locations: classpath:mapper/*.xml
+
+
+pagehelper:
+  helperDialect: oracle
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+logging:
+  config: classpath:logback-common.xml
+
+jasypt:
+  encryptor:
+    password: caitianyu
+
+ccty:
+  appfile:
+    root: root
+    home: home
+    excelTemplate: excelTemplate
+    excelExport: excelExport
+    pdfTemplate: pdfTemplate
+    attachment: attachment
+    area: area
+
+
+
