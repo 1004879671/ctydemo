@@ -19,6 +19,7 @@
         <module>common-server</module>
         <module>gateway-server</module>
         <module>business-server</module>
+        <module>uaa-server</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

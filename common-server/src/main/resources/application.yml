@@ -18,17 +18,24 @@ spring:
 #    active: dev
 
 
+#  datasource:
+#    type: com.alibaba.druid.pool.DruidDataSource            # 当前数据源操作类型
+#    driver-class-name: oracle.jdbc.driver.OracleDriver
+#    url: jdbc:oracle:thin:@//127.0.0.1:1521/orcl
+#    username: ENC(Lmvo/IB0FFXLKgZ8r6xYIg==)
+#    password: ENC(Lmvo/IB0FFXLKgZ8r6xYIg==)
+  ##   mysql数据源配置
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource            # 当前数据源操作类型
-    driver-class-name: oracle.jdbc.driver.OracleDriver
-    url: jdbc:oracle:thin:@//127.0.0.1:1521/orcl
-    username: ENC(Lmvo/IB0FFXLKgZ8r6xYIg==)
-    password: ENC(Lmvo/IB0FFXLKgZ8r6xYIg==)
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/user_db?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: root
 
 #mybatis配置
 #mybatis:
 #  config-location: classpath:mybatis-config.xml
-#  mapper-locations: classpath:mapper/*.xml
+#  mapper-locations: classpath:mapper/*.xmldriver-class-name
 
 mybatis-plus:
   config-location: classpath:mybatis-config.xml

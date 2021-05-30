@@ -1,0 +1,64 @@
+server:
+  port: 9006
+
+  tomcat:
+    remote_ip_header: x-forwarded-for
+    protocol_header: x-forwarded-proto
+  use-forward-headers: true
+  servlet:
+    context-path: /uaa
+
+#指定注册中心地址
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:7001/eureka/
+  instance:
+    preferIpAddress: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+
+#服务的名称
+spring:
+  application:
+    name: uaa-service
+  cloud:
+    config:
+      name: uaa-service   #配置文件名称的前缀
+      profile: dev   #版本
+      discovery:
+        enabled: false #是否开启服务发现
+        service-id: uaa-server
+
+  main:
+    allow-bean-definition-overriding: true
+    freemarker:
+      enabled: true
+      suffix: .html
+      request-context-attribute: rc
+      content-type: text/html
+      charset: UTF-8
+    mvc:
+      throw-exception-if-no-handler-found: true
+    resources:
+      add-mappings: false
+    http:
+      encoding:
+        enabled: true
+        charset: UTF-8
+        force: true
+
+
+
+
+  ##   mysql数据源配置
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource            # 当前数据源操作类型
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/user_db?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: root
+
+  #mybatis配置
+  config-location: classpath:mybatis-config.xml
+  type-aliases-package: com.ccty.service.uaa.entity           # 所有Entity别名类所在包
+  mapper-locations: classpath:mapper/*.xml
